@@ -2,236 +2,1644 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kibet's Portfolio</title>
+
+    <meta name="description"
+          content="Kibet - AI, Cybersecurity, IT, Web Development, Data Analysis and Graphic Design">
+
+    <meta name="keywords"
+          content="Kibet, AI, Artificial Intelligence, Cybersecurity, IT, Web Development, Data Analysis, Graphic Design">
+
+    <meta name="author" content="Kibet">
+
+    <meta name="theme-color" content="#07111f">
+
+    <title>Kibet | AI • Cybersecurity • IT • Design</title>
+
     <style>
-        /* General Styling */
-        body {
-            font-family: Arial, sans-serif;
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
             margin: 0;
             padding: 0;
-            background: url('background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            transition: background 0.5s, color 0.5s;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
+
+        :root {
+            --bg: #050b14;
+            --bg-secondary: #091525;
+            --card: rgba(255,255,255,0.05);
+            --card-hover: rgba(255,255,255,0.09);
+            --text: #f5f7fa;
+            --muted: #aab6c5;
+            --primary: #00d4ff;
+            --secondary: #7c3aed;
+            --accent: #00ffa3;
+            --border: rgba(255,255,255,0.1);
+            --shadow: 0 20px 60px rgba(0,0,0,0.35);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0,212,255,.12), transparent 30%),
+                radial-gradient(circle at 80% 10%, rgba(124,58,237,.15), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1150px, 92%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 15px auto 0;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(51, 51, 51, 0.9);
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
+            z-index: 9999;
+            background: rgba(5,11,20,.75);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
         }
 
-        nav ul {
+        .nav {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
             list-style: none;
-            padding: 5;
+            gap: 28px;
+            align-items: center;
         }
 
-        nav ul li {
-            display: inline;
-            margin: 30  50px;
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: .3s;
         }
 
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
+        .nav-links a:hover {
+            color: var(--primary);
         }
+
+        .menu-btn {
+            display: none;
+            border: 0;
+            background: none;
+            color: white;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         #hero {
-            text-align: center;
-            padding: 80px 20px 50px;
-            background: rgba(0, 123, 255, 0.8);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 60px;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid rgba(0,212,255,.3);
+            border-radius: 50px;
+            color: var(--primary);
+            background: rgba(0,212,255,.06);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.7rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            letter-spacing: -3px;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(
+                90deg,
+                var(--primary),
+                var(--secondary),
+                var(--accent)
+            );
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero h2 {
+            color: var(--muted);
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin: 22px 0;
+            font-weight: 400;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 650px;
+            font-size: 17px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
         }
 
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            background: #ff5733;
-            color: #fff;
-            text-decoration: none;
-            margin-top: 10px;
-            border-radius: 5px;
-            transition: 0.3s;
+            padding: 13px 24px;
+            border-radius: 10px;
+            font-weight: bold;
+            border: 1px solid var(--border);
+            transition: .3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #001018;
+        }
+
+        .btn-secondary {
+            background: var(--card);
         }
 
         .btn:hover {
-            background: #ff2e00;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,212,255,.2);
         }
 
-        section {
-            padding: 50px 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            margin: 10px;
-            border-radius: 10px;
+        /* HERO IMAGE */
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
         }
 
-        .portfolio-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            justify-items: center;
-            margin: auto;
-            max-width: 800px;
+        .profile-frame {
+            width: min(380px, 80vw);
+            aspect-ratio: 1;
+            border-radius: 30px;
+            padding: 4px;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary),
+                var(--accent)
+            );
+            transform: rotate(3deg);
+            box-shadow: var(--shadow);
         }
 
-        .portfolio-gallery img {
-            width: 100%;
-            max-width: 250px;
-            height: auto;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .portfolio-gallery img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        .profile-frame img {
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
+            object-fit: cover;
+            border-radius: 27px;
+            background: var(--bg-secondary);
+        }
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 50px;
             align-items: center;
-            z-index: 2000;
         }
 
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
+        .about-image {
+            border-radius: 25px;
+            overflow: hidden;
+            border: 1px solid var(--border);
         }
 
-        .lightbox:target {
-            display: flex;
+        .about-image img {
+            width: 100%;
+            min-height: 350px;
+            object-fit: cover;
         }
 
-        .service-box {
-            display: inline-block;
-            width: 30%;
-            margin: 10px;
+        .about-content h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .stat {
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat strong {
+            font-size: 25px;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat small {
+            color: var(--muted);
+        }
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: .35s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: var(--card-hover);
+            border-color: rgba(0,212,255,.4);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 50px;
+            color: var(--muted);
+            transition: .3s;
+        }
+
+        .skill:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* =====================================================
+           PORTFOLIO
+        ===================================================== */
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 22px;
+        }
+
+        .project {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .project:hover {
+            transform: translateY(-7px);
+        }
+
+        .project-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .project:hover img {
+            transform: scale(1.08);
+        }
+
+        .project-content {
+            padding: 22px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 8px;
+        }
+
+        .project-content p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 5px 9px;
+            border-radius: 20px;
+            background: rgba(0,212,255,.08);
+            color: var(--primary);
+        }
+
+        /* =====================================================
+           PROCESS
+        ===================================================== */
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .process {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(0,212,255,.1);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .process p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-box {
+            max-width: 800px;
+            margin: auto;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 35px;
+            border-radius: 25px;
         }
 
         form {
-            max-width: 400px;
-            margin: auto;
+            display: grid;
+            gap: 15px;
         }
 
-        form input, form textarea {
+        input,
+        textarea {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(0,0,0,.25);
+            color: white;
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary);
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
         }
 
         form button {
-            background: #007bff;
-            color: #fff;
-            padding: 10px;
             border: none;
             cursor: pointer;
+            padding: 14px;
+            border-radius: 10px;
+            background: var(--primary);
+            color: #001018;
+            font-weight: bold;
+            font-size: 15px;
         }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--muted);
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
             text-align: center;
-            padding: 20px;
-            background: rgba(51, 51, 51, 0.8);
-            color: #fff;
+            color: var(--muted);
         }
 
-        .dark-mode {
-            background: #222;
-            color: #fff;
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        @media (max-width: 600px) {
-            .portfolio-gallery {
+        .socials a {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            transition: .3s;
+        }
+
+        .socials a:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* =====================================================
+           WHATSAPP
+        ===================================================== */
+
+        .whatsapp {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #25d366;
+            color: white;
+            font-size: 28px;
+            z-index: 5000;
+            box-shadow: 0 10px 30px rgba(0,0,0,.4);
+        }
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .8s, transform .8s;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .hero-grid,
+            .about-grid {
                 grid-template-columns: 1fr;
             }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .about-image {
+                max-width: 600px;
+                margin: auto;
+            }
         }
+
+        @media (max-width: 650px) {
+
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                background: rgba(5,11,20,.97);
+                flex-direction: column;
+                display: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .services-grid,
+            .portfolio-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .contact-box {
+                padding: 22px;
+            }
+        }
+        .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+}
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Kibet's Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="shop.html">E-commerce</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="hero">
-        
-        <br>
-        <br>
-        <h2>Graphic Designer | Web Developer | Data Analyst | AI Creator</h2>
-        <p>Turning ideas into reality through creativity and technology.</p>
-        <a href="#contact" class="btn">Hire Me</a>
-        <button id="dark-mode-toggle">🌙 Dark Mode</button>
-    </section>
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I specialize in creating stunning designs, developing high-performance websites, analyzing data for insights, and building AI-powered solutions.</p>
-    </section>
+<header>
+    <div class="container nav">
 
-    <section id="portfolio">
-        <h2>Portfolio</h2>
-        <div class="portfolio-gallery">
-            <a href="#lightbox1"><img src="web1.jpg" alt="Web Design"></a>
-            <a href="#lightbox2"><img src="data1.jpg" alt="Data Analysis"></a>
-            <a href="#lightbox3"><img src="chatbot.jpg" alt="Chatbot Development"></a>
+        <a href="#hero" class="logo">
+    <img src="logo.png" alt="Kibet Logo">
+</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="shop.html">E-commerce</a></li>
+        </ul>
+
+    </div>
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section id="hero">
+
+    <div class="container hero-grid">
+
+        <div class="hero reveal">
+
+            <span class="badge">
+                🚀 Technology • Creativity • Innovation
+            </span>
+
+            <h1>
+                Village Globalization &
+                <span class="gradient">Civilization Reboot.</span>
+            </h1>
+
+            <h2>
+                AI Creator • Cybersecurity crusader • IT • Web Development • Data • Design
+            </h2>
+
+            <p>
+                Born in the corners of the villages of Africa,where technology is something out of this world belonging to extraterrestrial beings. I didn't know that at some point I will have chance to bask in it's glory. The moment I tasted the holy grail of technology I knew I have found my place in the great circle of life. But all in all leaving that behind, maybe you can check my memoir later for full story. what I'm saying actually is that I'm here to digitalize you, by providing you with the forbidden fruit of tech. Go through our services and reach out on what you want us to design for you.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#portfolio" class="btn btn-primary">
+                  Scroll down 
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    what can I design for you 
+                </a>
+
+            </div>
+
         </div>
-    </section>
 
-    <div id="lightbox1" class="lightbox">
-        <a href="#"><img src="web1.jpg"></a>
+
+        <div class="hero-image reveal">
+
+            <!--
+                REPLACE profile.jpg WITH YOUR OWN IMAGE
+            -->
+
+            <div class="profile-frame">
+
+                <img
+                    src="profile.jpg"
+                    alt="Kibet professional profile"
+                    loading="eager"
+                >
+
+            </div>
+
+        </div>
+
     </div>
-    <div id="lightbox2" class="lightbox">
-        <a href="#"><img src="data1.jpg"></a>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about" class="section">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+            <span>Who I Am</span>
+            <h2>About Me</h2>
+            <p>
+I am Victor Kibet, the founder and CEO of Kibetech company currently no brick and mortar office but our presence is strongly felt in the village digital space.
+
+
+Through Kibetech, we are building at the intersection of technology, creativity, Artificial Intelligence, cybersecurity, software, and digital innovation. But our ambition goes beyond building products.
+
+We want to bring technology closer to the people who are living in the remote villages of Africa,we want to make technology, knowledge, and intelligent tools more accessible. We believe a person's location should never determine how close they can stand to the future.
+
+Our long-term vision is much larger.
+
+We dream of building a company that will one day be a stepping stone to human civilization to higher civilization maybe typeI
+
+And somewhere on that horizon lies one of the greatest frontiers of all: Artificial General Intelligence (AGI)— intelligence capable of learning, reasoning, adapting, and contributing across a wide range of human endeavors.
+
+Perhaps it is an ambitious dream.
+
+But every great civilization was once only an idea in someone's mind.
+
+Kibetech is our attempt to turn that idea into reality — one invention, one person, and one possibility at a time.
+
+And if one day we fail there will be unfilled gap in human civilization.
+
+            </p>
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-image reveal">
+
+                <!-- Replace about.jpg with your image -->
+
+                <img
+                    src="about.jpg"
+                    alt="Kibet working on technology"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="about-content reveal">
+
+                <h3>
+                    Technology meets creativity.
+                </h3>
+
+                <p>
+
+Technology gives us the tools; creativity gives them a soul.
+
+It is where code becomes art, where ideas become experiences, and where impossible thoughts begin taking shape. I believe the most extraordinary innovations are born when a curious mind refuses to choose between being a creator and being a technologist.
+
+Technology can calculate. Creativity can imagine.
+Together, they can transform the world.
+
+This is where I choose to build — at the intersection of intelligence, imagination, and human possibility.
+
+                </p>
+
+                <p>
+                    My interests and services span artificial intelligence,
+                    cybersecurity, information technology, web development,
+                    data analysis, graphic design and digital systems.
+                </p>
+
+                <p>
+                    I enjoy turning complex ideas into simple, useful and
+                    practical solutions.
+                </p>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <strong>AI</strong>
+                        <small>Innovation</small>
+                    </div>
+
+                    <div class="stat">
+                        <strong>IT</strong>
+                        <small>Technology</small>
+                    </div>
+
+                    <div class="stat">
+                        <strong>∞</strong>
+                        <small>Ideas</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-    <div id="lightbox3" class="lightbox">
-        <a href="#"><img src="chatbot.jpg"></a>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section id="services" class="section">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>What I Do</span>
+
+            <h2>My Services</h2>
+
+            <p>
+                Digital solutions designed around your goals.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">🤖</div>
+
+                <h3>Artificial Intelligence</h3>
+
+                <p>
+                    AI tools, automation, chatbots, AI-powered applications
+                    and intelligent digital solutions.
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">🛡️</div>
+
+                <h3>Cybersecurity</h3>
+
+                <p>
+                    Security awareness, network security, vulnerability
+                    assessment concepts and secure system design.
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">💻</div>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Responsive websites, portfolios, business websites,
+                    web applications and modern user interfaces.
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">📊</div>
+
+                <h3>Data Analysis</h3>
+
+                <p>
+                    Transforming raw data into useful insights,
+                    visualizations and decision-support information.
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">🎨</div>
+
+                <h3>Graphic Design</h3>
+
+                <p>
+                    Posters, branding, social media graphics,
+                    digital artwork and visual communication.
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">⚙️</div>
+
+                <h3>IT Solutions</h3>
+
+                <p>
+                    Digital systems, technical support, networking,
+                    automation and technology consulting.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form action="https://formsubmit.co/vkibet926@gmail.com" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <p>Email: <a href="mailto:vkibet926@gmail.com">vkibet926@gmail.com</a></p>
-        <p>Phone: +254705840388</p>
-    </section>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Kibet. All Rights Reserved.</p>
-    </footer>
 
-    <script>
-        document.getElementById("dark-mode-toggle").addEventListener("click", function() {
-            document.body.classList.toggle("dark-mode");
+<!-- =====================================================
+     SKILLS
+===================================================== -->
+
+<section id="skills" class="section">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>Technology Stack</span>
+
+            <h2>Skills & Tools</h2>
+
+        </div>
+
+
+        <div class="skills reveal">
+
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Python</span>
+            <span class="skill">Django</span>
+            <span class="skill">PHP</span>
+            <span class="skill">MySQL</span>
+            <span class="skill">Git</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">Linux</span>
+            <span class="skill">Networking</span>
+            <span class="skill">Cybersecurity</span>
+            <span class="skill">Artificial Intelligence</span>
+            <span class="skill">Data Analysis</span>
+            <span class="skill">Photoshop</span>
+            <span class="skill">Illustrator</span>
+            <span class="skill">UI/UX</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PORTFOLIO
+===================================================== -->
+
+<section id="portfolio" class="section">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>Selected Work</span>
+
+            <h2>My Portfolio</h2>
+
+            <p>
+                Some examples of projects and creative work.
+            </p>
+
+        </div>
+
+
+        <div class="portfolio-grid">
+
+
+            <!-- PROJECT 1 -->
+
+            <article class="project reveal">
+
+                <div class="project-image">
+
+                    <img
+                        src="web1.jpg"
+                        alt="Web development project"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Web Development</h3>
+
+                    <p>
+                        Modern responsive website and digital experience.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">MySQL</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="project reveal">
+
+                <div class="project-image">
+
+                    <img
+                        src="data.jpg"
+                        alt="Data analysis project"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Data Analysis</h3>
+
+                    <p>
+                        Turning data into meaningful insights and
+                        visualizations.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Data</span>
+                        <span class="tag">Analysis</span>
+                        <span class="tag">Visualization</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 3 -->
+
+            <article class="project reveal">
+
+                <div class="project-image">
+
+                    <img
+                        src="chatbot.jpg"
+                        alt="AI chatbot project"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>AI Chatbot</h3>
+
+                    <p>
+                        Intelligent conversational systems and
+                        automation solutions.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">AI</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Chatbot</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 4 -->
+
+            <article class="project reveal">
+
+                <div class="project-image">
+
+                    <img
+                        src="cybersecurity.jpg"
+                        alt="Cybersecurity project"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Cybersecurity</h3>
+
+                    <p>
+                        Security testing, network monitoring and
+                        secure technology concepts.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Security</span>
+                        <span class="tag">Networks</span>
+                        <span class="tag">IT</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 5 -->
+
+            <article class="project reveal">
+
+                <div class="project-image">
+
+                    <img
+                        src="ai.jpg"
+                        alt="Artificial intelligence project"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Artificial Intelligence</h3>
+
+                    <p>
+                        AI-powered concepts, automation and
+                        intelligent applications.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">AI</span>
+                        <span class="tag">Machine Learning</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 6 -->
+
+            <article class="project reveal">
+
+                <div class="project-image">
+
+                    <img
+                        src="design.jpg"
+                        alt="Graphic design project"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Graphic Design</h3>
+
+                    <p>
+                        Creative visual designs for businesses,
+                        brands and digital media.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Design</span>
+                        <span class="tag">Branding</span>
+                        <span class="tag">Graphics</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WORK PROCESS
+===================================================== -->
+
+<section id="process" class="section">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>How I Work</span>
+
+            <h2>My Process</h2>
+
+        </div>
+
+
+        <div class="process-grid">
+
+
+            <div class="process reveal">
+
+                <div class="process-number">01</div>
+
+                <h3>Understand</h3>
+
+                <p>
+                    Understand your idea, goals and requirements.
+                </p>
+
+            </div>
+
+
+            <div class="process reveal">
+
+                <div class="process-number">02</div>
+
+                <h3>Plan</h3>
+
+                <p>
+                    Design the solution and choose the right technology.
+                </p>
+
+            </div>
+
+
+            <div class="process reveal">
+
+                <div class="process-number">03</div>
+
+                <h3>Build</h3>
+
+                <p>
+                    Develop, test and refine the project.
+                </p>
+
+            </div>
+
+
+            <div class="process reveal">
+
+                <div class="process-number">04</div>
+
+                <h3>Deliver</h3>
+
+                <p>
+                    Launch the solution and provide support.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section id="contact" class="section">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>Let's Connect</span>
+
+            <h2>Start a Project</h2>
+
+            <p>
+                Have an idea? Let's turn it into something real.
+            </p>
+
+        </div>
+
+
+        <div class="contact-box reveal">
+
+            <!--
+                IMPORTANT:
+                Keep your FormSubmit email here.
+            -->
+
+            <form
+                action="https://formsubmit.co/vkibet926@gmail.com"
+                method="POST"
+            >
+
+                <!-- FormSubmit configuration -->
+
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="New Portfolio Contact"
+                >
+
+                <input
+                    type="hidden"
+                    name="_captcha"
+                    value="true"
+                >
+
+                <input
+                    type="hidden"
+                    name="_template"
+                    value="table"
+                >
+
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <textarea
+                    name="message"
+                    placeholder="Tell me about your project..."
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    Send Message →
+                </button>
+
+            </form>
+
+
+            <div class="contact-info">
+
+                <p>
+                    📧
+                    <a href="mailto:vkibet926@gmail.com">
+                        vkibet926@gmail.com
+                    </a>
+                </p>
+
+                <p>
+                    📞
+                    <a href="tel:+254705840388">
+                        +254 705 840 388
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="socials">
+
+            <!-- Replace # with your actual social links -->
+
+            <a href="https://x.com/kibetech_" aria-label="Twitter">X</a>
+
+            <a href="#" aria-label="LinkedIn">in</a>
+
+            <a href="https://www.facebook.com/kibetechky" aria-label="Facebook">f</a>
+
+            <a href="https://www.instagram.com/kibetech1?igsh=b2UxamNnYnR5NHd2" aria-label="Instagram">◎</a>
+
+        </div>
+
+
+        <p>
+            © <span id="year"></span> Kibet. All Rights Reserved.
+        </p>
+
+        <p style="font-size:12px;margin-top:8px;">
+            AI • Cybersecurity • IT • Web • Data • Design
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/254705840388"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact me on WhatsApp"
+>
+    💬
+</a>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    /* Mobile navigation */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+    /* Close mobile menu after clicking a link */
+
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            navLinks.classList.remove("active");
+
         });
-    </script>
+
+    });
+
+
+    /* Dynamic year */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* Scroll reveal animation */
+
+    const observer = new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(function(entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+    document.querySelectorAll(".reveal").forEach(function(element) {
+
+        observer.observe(element);
+
+    });
+
+</script>
+
 </body>
 </html>
